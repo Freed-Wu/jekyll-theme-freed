@@ -1,0 +1,23 @@
+plugins:
+  - jekyll-readme-index
+  - jekyll-feed
+  - jekyll-archives
+  - jekyll-sitemap
+  - jekyll-mentions
+  - jekyll-spaceship
+  - jekyll-default-layout
+  - jekyll-seo-tag
+  - jekyll-remote-theme
+
+readme_index:
+  remove_originals: true
+  with_frontmatter: true
+
+# jekyll-feed
+title: Personal Blog
+description: Personal Blog of wzy
+author: wzy
+url: //Freed-Wu.github.io
+
+jekyll-archives:
+  enabled: all

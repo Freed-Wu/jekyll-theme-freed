@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+<small class="post-date">
+  <i class="fas fa-calendar-day"></i>
+  {{ page.date | date_to_string }}
+  <i class="fas fa-file-word"></i>
+  {{ page.content | strip_html | strip_newlines | remove: " " | size }} words
+  <i class="fas fa-coffee"></i>
+  {{ page.content | strip_html | strip_newlines | remove: " " | size | divided_by: 300 | plus: 1 }} minutes
+  <span id="{{ page.url }}" class="leancloud-visitors" data-flag-title="{{ page.title }}">
+    <i class="far fa-eye">
+    </i>
+    <span class="leancloud-visitors-count">
+    </span> times
+  </span>
+  <br/>
+  {% for node in page.tags %}
+  <i class="fas fa-tag"></i>
+  {{ node }}
+  {% endfor %}
+  <i class="fab fa-creative-commons"></i>
+  <a rel="license" href="//creativecommons.org/licenses/by-sa/4.0/deed.zh">
+    BY-SA 4.0
+  </a>
+</small>
+<div id="table-of-contents">
+  {% toc %}
+</div>
+{{ content }}
+<div class="reward">
+  <button id="rewardButton"
+    disable="enable"
+    onclick="var qr = document.getElementById('rewardQRs'); qr.style.display = (qr.style.display === 'block') ? 'none' : 'block';">
+    如果这篇博客帮助到你，可以请我喝一杯奶茶~
+  </button>
+  <table id="rewardQRs">
+    <tr>
+      {% for node in site.data.reward %}
+      <td id="{{ node.qr }}" class="reward_qr">
+        <img id="{{ node.qr }}_qr"
+             src="/assets/images/{{ node.qr }}.png"
+             alt="{{ site.author }}{{ node.qr }}"
+             height="300pt">
+      </td>
+      {% endfor %}
+    </tr>
+  </table>
+</div>
+<script src="/assets/js/valine.js">
+</script>
