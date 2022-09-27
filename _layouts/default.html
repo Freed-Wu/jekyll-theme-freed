@@ -1,68 +1,69 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
+<html lang="{{ page.lang | default: "en-US" }}">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
+    <meta name="author" content="{{ site.author }}">
+    <meta name="description" content="{{ site.description }}">
     <title>{{ page.title }} - {{ site.title }}</title>
-    <script src="//cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script>
-    <script src="/assets/js/autoloader.js"></script>
-    <script async defer src="//buttons.github.io/buttons.js"></script>
-    <link rel="shortcut icon" href="//avatars2.githubusercontent.com/u/32936898?s=460&v=4"/>
-    <link rel="apple-touch-icon-precomposed"  href="//avatars2.githubusercontent.com/u/32936898?s=460&v=4"/>
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/poole/lanyon/public/css/poole.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/poole/lanyon/public/css/syntax.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/poole/lanyon/public/css/lanyon.min.css">
+    <link rel="author" href="{{ site.url }}" />
+    <link rel="archives" href="/tag" />
+    <link rel="help" href="/" />
+    <link rel="license" href="//www.gnu.org/licenses/" />
+    <link rel="icon" href="//avatars2.githubusercontent.com/u/32936898?s=460&v=4" />
+    <link rel="apple-touch-icon" href="//avatars2.githubusercontent.com/u/32936898?s=460&v=4" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/poole/lanyon/public/css/poole.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/poole/lanyon/public/css/lanyon.min.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"> -->
+    <!-- only work for localhost and freed-wu.github.io -->
+    <script async src="//kit.fontawesome.com/556f02e0e5.js"></script>
+    <!-- https://github.com/stevenjoezhang/live2d-widget/issues/118 -->
+    <!-- only work for font not svg -->
+    <script async src="//cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.min.js"></script>
+    <!-- https://github.com/christian-fei/Simple-Jekyll-Search -->
+    <script async src="//cdn.jsdelivr.net/npm/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script>
+    <script async src="/assets/js/search.js"></script>
   </head>
+  <!-- https://github.com/poole/lanyon -->
   <body class="theme-base-08 layout-reverse sidebar-overlay">
+    <article class="container">
+      <header class="masthead">
+        <h1 class="masthead-title">
+          {{ page.title }}
+        </h1>
+      </header>
+      {{ content }}
+    </article>
     <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox" />
-    <div class="sidebar" id="sidebar">
+    <aside class="sidebar">
       <div class="sidebar-item">
         <div class="ih-item circle effect right_to_left">
-          <a class="blog-button" title="{{ site.author }}">
+          <a title="{{ site.author }}">
             <img class="img" src="//avatars2.githubusercontent.com/u/32936898?s=460&v=4" alt="img" />
-            <small class="info info-back">
-              <br/>
+            <small class="info">
+              <br />
               A nerd and geek
             </small>
           </a>
         </div>
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=52 src="//music.163.com/outchain/player?type=0&id=498177492&auto=0&height=32"></iframe>
+        <iframe height="42" src="//music.163.com/outchain/player?type=2&id=27646786&auto=1&height=32"></iframe>
       </div>
-      <div class="sidebar-social">
-        {% for node in site.data.social %}
+      <div class="sidebar-social">{% for node in site.data.social %}
         <a href="{{ node.href }}" title="{{ node.title }}">
           <i class="{{ node.fontawesome }} fa-fw"></i>
-        </a>
-        {% endfor %}
-        <a class="github-button" aria-label="Star Freed-Wu/Freed-Wu.github.io on GitHub" href="https://github.com/Freed-Wu/Freed-Wu.github.io" data-icon="octicon-star" data-show-count="true"></a>
+        </a>{% endfor %}
       </div>
-      <nav class="sidebar-nav">
-        {% for node in site.data.nav %}
+      <nav class="sidebar-nav">{% for node in site.data.nav %}
         <a class="sidebar-nav-item{% if page.url == node.href %} active{% endif %}" href="{{ node.href }}">
           <i class="{{ node.fontawesome }} fa-fw"></i> {{ node.title }}
-        </a>
-        {% endfor %}
+        </a>{% endfor %}
       </nav>
       <div class="sidebar-item">
+        <!-- https://github.com/christian-fei/Simple-Jekyll-Search#preparing-the-plugin -->
         <input id="search-input" placeholder="Search posts" />
         <div id="results-container"></div>
       </div>
-    </div>
-    <div class="wrap">
-      <div class="masthead">
-        <div class="container">
-          <h1 class="masthead-title">
-            {{ page.title }}
-          </h1>
-        </div>
-      </div>
-      <div class="container content">
-        {{ content }}
-      </div>
-    </div>
-    <label for="sidebar-checkbox" class="sidebar-toggle fas fa-bars"></label>
+    </aside>
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
   </body>
 </html>
