@@ -1,14 +1,15 @@
 ---
-layout: null
 ---
 [
-  {% for post in site.posts %}
-    {
-      "title"    : "{{ post.title | escape }}",
-      "category" : "{{ post.category }}",
-      "tags"     : "{{ post.tags | join: ', ' }}",
-      "url"      : "{{ site.baseurl }}{{ post.url }}",
-      "date"     : "{{ post.date }}"
-    } {% unless forloop.last %},{% endunless %}
-  {% endfor %}
+  {% for post in site.posts %}{
+    "title"    : "{{ post.title | escape }}",
+    "category" : "{{ post.category }}",
+    "tags"     : "{{ post.tags | join: ', ' }}",
+    "url"      : "{{ site.baseurl }}{{ post.url }}",
+    "date"     : "{{ post.date }}"
+  }{% unless forloop.last %},{% endunless %}{% endfor %}
 ]
+{%-comment-%}
+https://github.com/wu-kan/jekyll-theme-WuK/blob/836c3d000031008a747f0f81e55bb15db7d5acac/assets/simple-jekyll-search/search.json
+ex: filetype=liquid
+{%-endcomment-%}

@@ -3,24 +3,24 @@ layout: default
 ---
 
 <small class="post-date">
-  <i class="fas fa-calendar-day"></i>
+  <i class="fa-solid fa-calendar-day"></i>
   {{ page.date | date_to_string }}
-  <i class="fas fa-file-word"></i>
+  <i class="fa-solid fa-file-word"></i>
   {{ page.content | strip_html | strip_newlines | remove: " " | size }} words
-  <i class="fas fa-coffee"></i>
+  <i class="fa-solid fa-coffee"></i>
   {{ page.content | strip_html | strip_newlines | remove: " " | size | divided_by: 300 | plus: 1 }} minutes
   <span id="{{ page.url }}" class="leancloud-visitors" data-flag-title="{{ page.title }}">
-    <i class="far fa-eye">
+    <i class="fa-regular fa-eye">
     </i>
     <span class="leancloud-visitors-count">
     </span> times
   </span>
   <br/>
   {% for node in page.tags %}
-  <i class="fas fa-tag"></i>
+  <i class="fa-solid fa-tag"></i>
   {{ node }}
   {% endfor %}
-  <i class="fab fa-creative-commons"></i>
+  <i class="fa-brands fa-creative-commons"></i>
   <a rel="license" href="//creativecommons.org/licenses/by-sa/4.0/deed.zh">
     BY-SA 4.0
   </a>
