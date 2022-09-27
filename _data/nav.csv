@@ -1,7 +1,7 @@
 fontawesome,title,href
-fas fa-home,Home,/
-fas fa-tags,Tag,/tag/misc/
-fas fa-address-book,Resume,/2020/01/01/resume
-fas fa-trophy,Honour,/2020/01/01/honour
-fas fa-comments,About Me,/2020/01/01/about-me
-fas fa-code,About the Website,/2020/01/01/about-the-website
+fa-solid fa-home,Home,/
+fa-solid fa-tags,Tag,/tag/misc/
+fa-solid fa-address-book,Resume,//github.com/Freed-Wu
+fa-solid fa-trophy,Honour,/2020/01/01/honour
+fa-solid fa-comments,About Me,/2020/01/01/about-me
+fa-solid fa-code,Use the Website Template,//github.com/Freed-Wu/Freed-Wu.github.io/generate

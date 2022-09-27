@@ -13,11 +13,11 @@ readme_index:
   remove_originals: true
   with_frontmatter: true
 
-# jekyll-feed
-title: Personal Blog
-description: Personal Blog of wzy
-author: wzy
-url: //Freed-Wu.github.io
-
 jekyll-archives:
   enabled: all
+
+# jekyll-feed
+title: Wu Zhenyu's Blog
+author: Wu Zhenyu
+description: Record valuable and interesting things
+url: //Freed-Wu.github.io
