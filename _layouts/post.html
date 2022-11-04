@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+<small class="post-date">
+  <i class="fa-solid fa-calendar-day"></i>
+  {{ page.date | date_to_string }}
+  <i class="fa-solid fa-file-word"></i>
+  {{ page.content | strip_html | strip_newlines | remove: " " | size }} words
+  <i class="fa-solid fa-coffee"></i>
+  {{ page.content | strip_html | strip_newlines | remove: " " | size | divided_by: 300 | plus: 1 }} minutes
+  <span id="{{ page.url }}" class="leancloud-visitors" data-flag-title="{{ page.title }}">
+    <i class="fa-regular fa-eye">
+    </i>
+    <span class="leancloud-visitors-count">
+    </span> times
+  </span>
+  <br/>
+  {% for node in page.tags %}
+  <i class="fa-solid fa-tag"></i>
+  {{ node }}
+  {% endfor %}
+  <i class="fa-brands fa-creative-commons"></i>
+  <a rel="license" href="//creativecommons.org/licenses/by-sa/4.0/deed.zh">
+    BY-SA 4.0
+  </a>
+</small>
+{% include jekyll-toc/_includes/toc.html html=content %}
+{{ content }}
+<div class="reward">
+  <button id="rewardButton"
+    disable="enable"
+    onclick="var qr = document.getElementById('rewardQRs'); qr.style.display = (qr.style.display === 'block') ? 'none' : 'block';">
+    如果这篇博客帮助到你，可以请我喝一杯奶茶~
+  </button>
+  <table id="rewardQRs">
+    <tr>
+      {% for node in site.data.reward %}
+      <td id="{{ node.qr }}" class="reward_qr">
+        <img id="{{ node.qr }}_qr"
+             src="{{ node.url }}"
+             alt="{{ site.author }}{{ node.qr }}"
+             height="300pt">
+      </td>
+      {% endfor %}
+    </tr>
+  </table>
+</div>
+<script src="/assets/js/valine.js">
+</script>

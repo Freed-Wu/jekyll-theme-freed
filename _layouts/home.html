@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<small class="post-date">
+  <i class="fa-solid fa-cog fa-spin fa-fw"></i> <span id="run_time"></span>
+  <script src="/assets/js/run_time.js"></script>
+  <i class="fa-solid fa-eye fa-fw"></i>
+  <span id="busuanzi_value_page_pv"></span> times
+  <i class="fa-solid fa-paw fa-fw"></i>
+  <span id="busuanzi_value_site_pv"></span>th
+  <i class="fa-solid fa-user-friends fa-fw"></i>
+  <span id="busuanzi_value_site_uv"></span> people
+  <br/>
+  <script src="//cdn.jsdelivr.net/npm/busuanzi/bsz.pure.mini.min.js"></script>
+  <i class="fa-solid fa-copyright fa-fw"></i>
+  {{ site.time | date: '%Y' }}
+  {{ site.author }}
+  <i class="fa-solid fa-user-edit fa-fw"></i>
+  {{ site.time | date: '%F %T' }}
+</small>
+{{ content }}
+<h2>Recent</h2>
+<ul>{% for post in site.posts %}
+  <li>
+    <a href="{{ post.url }}">{{ post.title }}</a>, {{ post.date | date_to_string }}
+  </li>{% endfor %}
+</ul>

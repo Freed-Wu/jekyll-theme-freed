@@ -1,0 +1,51 @@
+---
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: true  # add comments to all blog posts
+      social-share: true # add social media sharing buttons to all blog posts
+  - scope:
+      path: "" # any file that's not a post will be a "page" layout by default
+    values:
+      layout: default
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - LICENSE
+  - "*.gemspec"
+  - "*.toml"
+  - "*.yml"
+  - "*.yaml"
+
+plugins:
+  - jekyll-readme-index
+  - jekyll-feed
+  - jekyll-archives
+  - jekyll-sitemap
+  - jekyll-mentions
+  - jekyll-spaceship
+  - jekyll-default-layout
+  - jekyll-seo-tag
+  - jekyll-remote-theme
+
+readme_index:
+  remove_originals: true
+  with_frontmatter: true
+
+jekyll-archives:
+  enabled: all
+
+# jekyll-feed
+title: Wu Zhenyu's Blog
+author: Wu Zhenyu
+description: Record valuable and interesting things
+url: https://Freed-Wu.github.io
