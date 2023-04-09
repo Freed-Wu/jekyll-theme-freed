@@ -25,3 +25,100 @@
 [![github/code-size](https://shields.io/github/languages/code-size/Freed-Wu/jekyll-theme-freed)](https://github.com/Freed-Wu/jekyll-theme-freed)
 [![github/repo-size](https://shields.io/github/repo-size/Freed-Wu/jekyll-theme-freed)](https://github.com/Freed-Wu/jekyll-theme-freed)
 [![github/v](https://shields.io/github/v/release/Freed-Wu/jekyll-theme-freed)](https://github.com/Freed-Wu/jekyll-theme-freed)
+
+Change the following `Freed-Wu` to your github username.
+
+## Build in Github
+
+### Create a Repo
+
+[Use this template](https://github.com/Freed-Wu/Freed-Wu.github.io/generate) to
+create a repo named `Freed-Wu.github.io`.
+
+### Create a Token
+
+If you install [`github-cli`](https://github.com/cli/cli):
+
+```shell
+$ gh auth login  # login github, `~/.git-credentials` will be created after login
+$ cat ~/.git-credentials
+https://Freed-Wu:gho_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX@github.com
+```
+
+Or you can use [`github web UI`](https://github.com/settings/tokens/) to create
+a token refer to
+<https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token>.
+
+### Create a Secret for Your Repo according to Your Token
+
+Go to
+<https://github.com/Freed-Wu/Freed-Wu.github.io/settings/secrets/actions>
+to create a secret named `GH_TOKEN` like
+`gho_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` refer to
+<https://docs.github.com/en/actions/security-guides/encrypted-secrets>.
+
+### Create a New Post
+
+```shell
+git clone https://github.com/Freed-Wu/Freed-Wu.github.io
+cd Freed-Wu.github.io
+vi _config.yaml  # use your information to replace mime
+vi README.md  # create your homepage
+rm _post/*  # delete my posts
+vi _post/YYYY-MM-DD-title.md  # create your post
+git add -A
+git commit
+git push
+```
+
+Deploy github pages from branch `gh-pages`'s `/` refer to
+<https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-from-a-branch>.
+A incorrect branch will bring you
+[some bug](https://github.com/jekyll/jekyll/discussions/9341).
+
+Now wait
+<https://github.com/Freed-Wu/Freed-Wu.github.io/actions/workflows/pages/pages-build-deployment>
+finished. Open <https://Freed-Wu.github.io> to see your blog:
+
+```shell
+xdg-open https://Freed-Wu.github.io
+```
+
+## Build in Localhost
+
+Install [jekyll](https://jekyllrb.com), then:
+
+```shell
+git clone --recurse-submodules --depth=1 https://github.com/Freed-Wu/Freed-Wu.github.io
+cd Freed-Wu.github.io
+bundle install
+bundle exec jekyll s
+```
+
+For NixOS users, in order to avoid
+[some bug](https://github.com/ntkme/sass-embedded-host-ruby/issues/116),
+remember:
+
+<!-- markdownlint-disable MD013 -->
+
+```shell
+bundle config force_ruby_platform true
+NIX_BINTOOLS=$(nix --extra-experimental-features nix-command --extra-experimental-features flakes eval -f '<nixpkgs>' --raw binutils) bundle install
+```
+
+<!-- markdownlint-enable MD013 -->
+
+<https://localhost:4000> will be opened automatically to display your blog.
+
+## After Building in Github, Open in Localhost
+
+```shell
+git clone --branch=gh-pages https://github.com/Freed-Wu/Freed-Wu.github.io _site
+python -m http.server -d _site
+```
+
+Open <http://localhost:8000> to see your blog:
+
+```shell
+xdg-open http://localhost:8000
+```
