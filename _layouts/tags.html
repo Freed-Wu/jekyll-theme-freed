@@ -6,7 +6,17 @@ layout: default
 forloop.last-%} , {%-endunless-%} {%-endfor-%} {%-endcapture-%} {%-assign
 tags_list = site_tags | split: "," | sort-%} {%-assign date_format =
 site.date_format | default: "%B %-d, %Y"-%} {%-for tag in tags_list %}
-<a href="{{-tag-}}" class="btn btn-primary tag-btn">
+<a
+  href="
+{%-if site.jekyll-archives.permalinks.tag-%}
+{%-assign tokens = site.jekyll-archives.permalinks.tag | split: ':name'-%}
+{{ tokens[0] }}
+{%-else-%}
+/tag
+{%-endif-%}
+/{{-tag-}}"
+  class="btn btn-primary tag-btn"
+>
   <i class="fas fa-tag" aria-hidden="true"></i
   >&nbsp;{{-tag-}}&nbsp;({{site.tags[tag].size}})
 </a>
@@ -14,7 +24,15 @@ site.date_format | default: "%B %-d, %Y"-%} {%-for tag in tags_list %}
 <div id="full-tags-list">
   {%-for tag in tags_list %}
   <h2 id="{{-tag-}}" class="linked-section">
-    <a href="{{-tag-}}.xml">
+    <a
+      href="
+    {%-if site.feed.tags.path-%}
+    {{ site.feed.tags.path }}
+    {%-else-%}
+    /feed/by_tag
+    {%-endif-%}
+    /{{-tag-}}.xml"
+    >
       <i class="fas fa-tag" aria-hidden="true"></i
       >&nbsp;{{-tag-}}&nbsp;({{site.tags[tag].size}})
     </a>

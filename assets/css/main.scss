@@ -3,7 +3,9 @@
 
 body {
   padding-bottom: 100vh;
+  {%-if page.image %}
   background: url("{{ page.image }}") no-repeat top center/100% fixed;
+  {%-endif %}
 }
 iframe {
   border: 0;
