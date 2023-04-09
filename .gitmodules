@@ -1,6 +1,0 @@
-[submodule "Freed-Wu"]
-	path = Freed-Wu
-	url = https://github.com/Freed-Wu/Freed-Wu
-[submodule "_includes/jekyll-toc"]
-	path = _includes/jekyll-toc
-	url = https://github.com/allejo/jekyll-toc
