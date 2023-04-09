@@ -1,36 +1,42 @@
-<!DOCTYPE html>
-<html lang="{{ page.lang | default: "en-US" }}">
+<!doctype html>
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta name="author" content="{{ site.author }}">
-    <meta name="description" content="{{ site.description }}">
-    <title>{{ page.title }} - {{ site.title }}</title>
-    <link rel="author" href="{{ site.url }}" />
-    <link rel="archives" href="/tag" />
-    <link rel="help" href="/" />
-    <link rel="license" href="//www.gnu.org/licenses/" />
-    <link rel="icon" href="//avatars2.githubusercontent.com/u/32936898" />
-    <link rel="apple-touch-icon" href="//avatars2.githubusercontent.com/u/32936898" />
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/poole/lanyon/public/css/poole.min.css" />
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/poole/lanyon/public/css/lanyon.min.css" />
+    {%-seo %}
+    <link rel="icon" href="{{ site.logo }}" />
+    <link rel="apple-touch-icon" href="{{ site.logo }}" />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/poole/lanyon/public/css/poole.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/poole/lanyon/public/css/lanyon.min.css"
+    />
     <link rel="stylesheet" href="/assets/css/main.css" />
-    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"> -->
-    <!-- only work for localhost and freed-wu.github.io -->
-    <script async src="//kit.fontawesome.com/556f02e0e5.js"></script>
-    <!-- https://github.com/stevenjoezhang/live2d-widget/issues/118 -->
-    <!-- only work for font not svg -->
-    <script async src="//cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.min.js"></script>
+    {%-if site.fontawesome %}
+    <script async src="{{ site.fontawesome }}"></script>
+    {%-else %}
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+    {%-endif %}
+    <script
+      async
+      src="//cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.min.js"
+    ></script>
     <!-- https://github.com/christian-fei/Simple-Jekyll-Search -->
-    <script async src="//cdn.jsdelivr.net/npm/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script>
+    <script
+      async
+      src="//cdn.jsdelivr.net/npm/simple-jekyll-search/dest/simple-jekyll-search.min.js"
+    ></script>
     <script async src="/assets/js/search.js"></script>
   </head>
   <!-- https://github.com/poole/lanyon -->
   <body class="theme-base-08 layout-reverse sidebar-overlay">
     <article class="container">
       <header class="masthead">
-        <h1 class="masthead-title">
-          {{ page.title }}
-        </h1>
+        <h1 class="masthead-title">{{ page.title }}</h1>
       </header>
       {{ content }}
     </article>
@@ -39,19 +45,24 @@
       <div class="sidebar-item">
         <div class="ih-item">
           <a title="{{ site.author }}">
-            <img class="img" src="//avatars2.githubusercontent.com/u/32936898?s=460&v=4" alt="img" />
+            <img class="img" src="{{ site.logo }}" alt="img" />
             <small class="info">
               <br />
-              A nerd and geek
+              {{ site.description }}
             </small>
           </a>
         </div>
-        <iframe height="42" src="//music.163.com/outchain/player?type=2&id=27646786&auto=1&height=32"></iframe>
+        <iframe height="42" src="{{ site.music }}"></iframe>
       </div>
-      <nav class="sidebar-nav">{% for node in site.data.nav %}
-        <a class="sidebar-nav-item{% if page.url == node.href %} active{% endif %}" href="{{ node.href }}">
-          <i class="{{ node.fontawesome }} fa-fw"></i> {{ node.title }}
-        </a>{% endfor %}
+      <nav class="sidebar-nav">
+        {%-for node in site.nav %}
+        <a
+          class="sidebar-nav-item {%-if page.url == node.href %} active {%-endif-%}"
+          href="{{ node.href }}"
+        >
+          <i class="{{ node.fontawesome }} fa-fw"></i>&nbsp;{{ node.title }}
+        </a>
+        {%-endfor %}
       </nav>
       <div class="sidebar-item">
         <!-- https://github.com/christian-fei/Simple-Jekyll-Search#preparing-the-plugin -->

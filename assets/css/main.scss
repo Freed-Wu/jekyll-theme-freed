@@ -1,7 +1,9 @@
+---
+---
+
 body {
   padding-bottom: 100vh;
-  background: url("//pic2.zhimg.com/v2-d3d225ac45efdb35889e0d284f682c1f_1440w.jpg")
-    no-repeat top center/100% fixed;
+  background: url("{{ page.image }}") no-repeat top center/100% fixed;
 }
 iframe {
   border: 0;

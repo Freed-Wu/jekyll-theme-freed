@@ -6,5 +6,5 @@ document.addEventListener("DOMContentLoaded", function () {
     resultsContainer: document.getElementById("results-container"),
     fuzzy: true,
     noResultsText: "not found",
-  })
-})
+  });
+});
