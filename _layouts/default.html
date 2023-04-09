@@ -52,7 +52,9 @@
             </small>
           </a>
         </div>
+        {%-if site.music %}
         <iframe height="42" src="{{ site.music }}"></iframe>
+        {%-endif %}
       </div>
       <nav class="sidebar-nav">
         {%-for node in site.nav %}
