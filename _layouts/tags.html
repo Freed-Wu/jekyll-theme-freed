@@ -1,6 +1,5 @@
 ---
 layout: default
-title: Tag
 ---
 
 {%-capture site_tags-%} {%-for tag in site.tags-%} {{-tag | first-}} {%-unless
@@ -34,3 +33,4 @@ site.date_format | default: "%B %-d, %Y"-%} {%-for tag in tags_list %}
   </div>
   {%-endfor %}
 </div>
+{{ content }}
