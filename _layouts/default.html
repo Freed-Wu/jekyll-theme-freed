@@ -44,7 +44,15 @@
     <aside class="sidebar">
       <div class="sidebar-item">
         <div class="ih-item">
-          <a title="{{ site.author }}">
+          <a
+            title="
+            {%-if site.author.name %}
+              {{ site.author.name }}
+            {%-else %}
+              {{ site.github.owner_name }}
+            {%-endif %}
+            "
+          >
             <img
               class="img"
               src="{{ site.github.owner_gravatar_url }}"
@@ -61,14 +69,21 @@
         {%-endif %}
       </div>
       <nav class="sidebar-nav">
-        {%-for node in site.nav %}
+        {%-if site.nav[0] %} {%-for node in site.nav %}
         <a
-          class="sidebar-nav-item {%-if page.url == node.href %} active {%-endif-%}"
+          class="sidebar-nav-item {%-if page.url == node.href %} active {%-endif %}"
           href="{{ node.href }}"
         >
-          <i class="{{ node.fontawesome }} fa-fw"></i>&nbsp;{{ node.title }}
+          <i class="{{ node.fontawesome }} fa-fw"></i> {{ node.title }}
         </a>
-        {%-endfor %}
+        {%-endfor %} {%-else %}
+        <a
+          class="sidebar-nav-item {%-if page.url == '/' %} active {%-endif-%}"
+          href="/"
+        >
+          <i class="fa-solid fa-home fa-fw"></i> Home
+        </a>
+        {%-endif %}
       </nav>
       <div class="sidebar-item">
         <!-- https://github.com/christian-fei/Simple-Jekyll-Search#preparing-the-plugin -->

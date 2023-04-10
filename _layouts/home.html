@@ -12,7 +12,7 @@ layout: default
   <span id="busuanzi_value_site_uv"></span> people
   <i class="fa-solid fa-user-edit fa-fw"></i> {{ site.time | date: '%F %T' }}
 </small>
-{{ content }}
+{{ content }} {%-if site.posts[0] %}
 <h2>Recent</h2>
 {%-for post in site.posts %}
 <a href="{{ post.url }}">
@@ -40,6 +40,6 @@ layout: default
   <a href="/tag/{{-node-}}"> <i class="fa-solid fa-tag"></i> {{ node }} </a>
   {%-endfor %}
 </small>
-{{ post.excerpt }} {%-endfor %}
+{{ post.excerpt }} {%-endfor %} {%-endif %}
 <script src="/assets/js/run_time.js"></script>
 <script src="//cdn.jsdelivr.net/npm/busuanzi/bsz.pure.mini.min.js"></script>
