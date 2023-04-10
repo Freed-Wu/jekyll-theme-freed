@@ -1,5 +1,5 @@
 ---
-exclude: ^assets/(json/search\.json|css/main\.css)$
+exclude: ^assets/(json/search\.json|css/main\.scss)$
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
