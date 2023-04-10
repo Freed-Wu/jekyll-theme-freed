@@ -2,8 +2,8 @@
 <html>
   <head>
     {%-seo %}
-    <link rel="icon" href="{{ site.logo }}" />
-    <link rel="apple-touch-icon" href="{{ site.logo }}" />
+    <link rel="icon" href="{{ site.github.owner_gravatar_url }}" />
+    <link rel="apple-touch-icon" href="{{ site.github.owner_gravatar_url }}" />
     <link
       rel="stylesheet"
       href="//cdn.jsdelivr.net/gh/poole/lanyon/public/css/poole.min.css"
@@ -45,7 +45,11 @@
       <div class="sidebar-item">
         <div class="ih-item">
           <a title="{{ site.author }}">
-            <img class="img" src="{{ site.logo }}" alt="img" />
+            <img
+              class="img"
+              src="{{ site.github.owner_gravatar_url }}"
+              alt="img"
+            />
             <small class="info">
               <br />
               {{ site.description }}
