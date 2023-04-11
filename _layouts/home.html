@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+<small class="post-date">
+  <i class="fa-solid fa-cog fa-spin fa-fw"></i> <span id="run_time"></span>
+  <i class="fa-solid fa-eye fa-fw"></i>
+  <span id="busuanzi_value_page_pv"></span>
+  <i class="fa-solid fa-paw fa-fw"></i>
+  <span id="busuanzi_value_site_pv"></span>th
+  <i class="fa-solid fa-user-friends fa-fw"></i>
+  <span id="busuanzi_value_site_uv"></span> people
+  <i class="fa-solid fa-user-edit fa-fw"></i> {{ site.time | date: '%F %T' }}
+</small>
+{{ content }} {%-if site.posts[0] %}
+<h2>Recent</h2>
+{%-for post in site.posts %}
+<a href="{{ post.url }}">
+  <h3>{{ post.title }}</h3>
+</a>
+<small class="post-date">
+  <i class="fa-solid fa-calendar-day"></i> {{ post.date | date_to_string }}
+  <i class="fa-solid fa-file-word"></i> {{ post.content | strip_html |
+  strip_newlines | remove: " " | size }} words
+  <i class="fa-solid fa-coffee"></i> {{ post.content | strip_html |
+  strip_newlines | remove: " " | size | divided_by: 300 | plus: 1 }} minutes
+  <span
+    id="{{ post.url }}"
+    class="leancloud-visitors"
+    data-flag-title="{{ post.title }}"
+  >
+    <i class="fa-regular fa-eye"></i>
+    <span class="leancloud-visitors-count"></span>
+  </span>
+  <a rel="license" href="//creativecommons.org/licenses/by-sa/4.0/deed.zh">
+    <i class="fa-brands fa-creative-commons"></i> BY-SA 4.0
+  </a>
+  <br />
+  {%-for node in post.tags %}
+  <a href="/tag/{{-node-}}"> <i class="fa-solid fa-tag"></i> {{ node }} </a>
+  {%-endfor %}
+</small>
+{{ post.excerpt }} {%-endfor %} {%-endif %}
+<script src="/assets/js/run_time.js"></script>
+<script src="//cdn.jsdelivr.net/npm/busuanzi/bsz.pure.mini.min.js"></script>

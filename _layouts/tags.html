@@ -1,0 +1,54 @@
+---
+layout: default
+---
+
+{%-capture site_tags-%} {%-for tag in site.tags-%} {{-tag | first-}} {%-unless
+forloop.last-%} , {%-endunless-%} {%-endfor-%} {%-endcapture-%} {%-assign
+tags_list = site_tags | split: "," | sort-%} {%-assign date_format =
+site.date_format | default: "%B %-d, %Y"-%} {%-for tag in tags_list %}
+<a
+  href="
+{%-if site.jekyll-archives.permalinks.tag-%}
+{%-assign tokens = site.jekyll-archives.permalinks.tag | split: ':name'-%}
+{{ tokens[0] }}
+{%-else-%}
+/tag
+{%-endif-%}
+/{{-tag-}}"
+  class="btn btn-primary tag-btn"
+>
+  <i class="fas fa-tag" aria-hidden="true"></i
+  >&nbsp;{{-tag-}}&nbsp;({{site.tags[tag].size}})
+</a>
+{%-endfor %}
+<div id="full-tags-list">
+  {%-for tag in tags_list %}
+  <h2 id="{{-tag-}}" class="linked-section">
+    <a
+      href="
+    {%-if site.feed.tags.path-%}
+    {{ site.feed.tags.path }}
+    {%-else-%}
+    /feed/by_tag
+    {%-endif-%}
+    /{{-tag-}}.xml"
+    >
+      <i class="fas fa-tag" aria-hidden="true"></i
+      >&nbsp;{{-tag-}}&nbsp;({{site.tags[tag].size}})
+    </a>
+  </h2>
+  <div class="post-list">
+    {%-for post in site.tags[tag] %}
+    <div class="tag-entry">
+      <a href="{{ post.url | relative_url }}">{{-post.title | strip_html-}}</a>
+      <div class="entry-date">
+        <time datetime="{{-post.date | date_to_xmlschema-}}">
+          {{-post.date | date: date_format-}}
+        </time>
+      </div>
+    </div>
+    {%-endfor %}
+  </div>
+  {%-endfor %}
+</div>
+{{ content }}
