@@ -1,6 +1,8 @@
 # jekyll-theme-freed
 
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Freed-Wu/jekyll-theme-freed/main.svg)](https://results.pre-commit.ci/latest/github/Freed-Wu/jekyll-theme-freed/main)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Freed-Wu/Freed-Wu.github.io/main.svg)](https://results.pre-commit.ci/latest/github/Freed-Wu/Freed-Wu.github.io/main)
+[![github/workflow](https://github.com/Freed-Wu/Freed-Wu.github.io/actions/workflows/main.yml/badge.svg)](https://github.com/Freed-Wu/Freed-Wu.github.io/actions)
 
 [![github/downloads](https://shields.io/github/downloads/Freed-Wu/jekyll-theme-freed/total)](https://github.com/Freed-Wu/jekyll-theme-freed/releases)
 [![github/downloads/latest](https://shields.io/github/downloads/Freed-Wu/jekyll-theme-freed/latest/total)](https://github.com/Freed-Wu/jekyll-theme-freed/releases/latest)
@@ -25,6 +27,8 @@
 [![github/code-size](https://shields.io/github/languages/code-size/Freed-Wu/jekyll-theme-freed)](https://github.com/Freed-Wu/jekyll-theme-freed)
 [![github/repo-size](https://shields.io/github/repo-size/Freed-Wu/jekyll-theme-freed)](https://github.com/Freed-Wu/jekyll-theme-freed)
 [![github/v](https://shields.io/github/v/release/Freed-Wu/jekyll-theme-freed)](https://github.com/Freed-Wu/jekyll-theme-freed)
+
+A guide to build a blog like [mine](https://freed-wu.github.io).
 
 Change the following `Freed-Wu` to your github username.
 
@@ -73,7 +77,7 @@ git push
 
 Deploy github pages from branch `gh-pages`'s `/` refer to
 <https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-from-a-branch>.
-A incorrect branch will bring you
+An incorrect branch will bring you
 [some bug](https://github.com/jekyll/jekyll/discussions/9341).
 
 Now wait
@@ -83,32 +87,6 @@ finished. Open <https://Freed-Wu.github.io> to see your blog:
 ```shell
 xdg-open https://Freed-Wu.github.io
 ```
-
-## Build in Localhost
-
-Install [jekyll](https://jekyllrb.com), then:
-
-```shell
-git clone --recurse-submodules --depth=1 https://github.com/Freed-Wu/Freed-Wu.github.io
-cd Freed-Wu.github.io
-bundle install
-bundle exec jekyll s
-```
-
-For NixOS users, in order to avoid
-[some bug](https://github.com/ntkme/sass-embedded-host-ruby/issues/116),
-remember:
-
-<!-- markdownlint-disable MD013 -->
-
-```shell
-bundle config force_ruby_platform true
-NIX_BINTOOLS=$(nix --extra-experimental-features nix-command --extra-experimental-features flakes eval -f '<nixpkgs>' --raw binutils) bundle install
-```
-
-<!-- markdownlint-enable MD013 -->
-
-<https://localhost:4000> will be opened automatically to display your blog.
 
 ## After Building in Github, Open in Localhost
 
@@ -122,3 +100,33 @@ Open <http://localhost:8000> to see your blog:
 ```shell
 xdg-open http://localhost:8000
 ```
+
+## Build in Localhost
+
+```shell
+git clone --recurse-submodules --depth=1 https://github.com/Freed-Wu/Freed-Wu.github.io
+cd Freed-Wu.github.io
+```
+
+### Install Dependencies
+
+#### [`AUR`](https://aur.archlinux.org)
+
+```shell
+./install.sh
+```
+
+#### [`nix`](https://search.nixos.org/packages)
+
+```shell
+nix-shell --command 'jekyll s'
+```
+
+#### [`rubygems`](https://rubygems.org/)
+
+```shell
+bundle install
+bundle exec jekyll s
+```
+
+<https://localhost:4000> will be opened automatically to display your blog.
