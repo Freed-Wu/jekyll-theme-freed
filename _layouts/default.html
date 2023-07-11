@@ -13,6 +13,10 @@
       href="//cdn.jsdelivr.net/gh/poole/lanyon/public/css/lanyon.min.css"
     />
     <link rel="stylesheet" href="//jekyllrb.com/css/screen.css" />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css/github-markdown.css"
+    />
     <link rel="stylesheet" href="/assets/css/main.css" />
     {%-if site.fontawesome %}
     <script async src="{{ site.fontawesome }}"></script>
@@ -36,8 +40,8 @@
   <!-- https://github.com/poole/lanyon -->
   <body class="theme-base-08 layout-reverse sidebar-overlay">
     <article class="container">
-      <header class="masthead">
-        <h1 class="masthead-title">{{ page.title }}</h1>
+      <header>
+        <h1>{{ page.title }}</h1>
       </header>
       {{ content }}
     </article>
@@ -59,10 +63,11 @@
               src="{{ site.github.owner_gravatar_url }}"
               alt="img"
             />
-            <small class="info">
+            <div class="info">
+              <br />
               <br />
               {{ site.description }}
-            </small>
+            </div>
           </a>
         </div>
         {%-if site.music %}

@@ -1,23 +1,32 @@
 ---
 ---
 
+h1, h2, h3, h4, h5, h6 {
+  color: #FFFFFF;
+}
 body {
   padding-bottom: 100vh;
   {%-if page.image %}
   background: url("{{ page.image }}") no-repeat top center/100% fixed;
   {%-endif %}
 }
+img {
+  display: inline;
+  margin-bottom: 0rem;
+  // https://github.com/jeffreytse/jekyll-spaceship/issues/91
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
 iframe {
   border: 0;
   margin: 0;
 }
 article {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 1rem #fff;
 }
-.masthead {
-  margin-bottom: 0rem;
-  border-bottom-width: 0px;
+header {
+  text-align: center;
 }
 .sidebar-social {
   text-align: center;
@@ -74,4 +83,6 @@ aside a:focus {
   inset: 0;
   text-align: center;
   backface-visibility: hidden;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+  background-color: rgba(0, 0, 0, 0);
 }

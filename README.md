@@ -34,10 +34,10 @@ Change the following `Freed-Wu` to your github username.
 
 ## Build in Github
 
-### Create a Repo
+### Create a Repository
 
 [Use this template](https://github.com/Freed-Wu/Freed-Wu.github.io/generate) to
-create a repo named `Freed-Wu.github.io`.
+create a repository named `Freed-Wu.github.io`.
 
 ### Create a Token
 
@@ -92,12 +92,7 @@ xdg-open https://Freed-Wu.github.io
 
 ```shell
 git clone --branch=gh-pages https://github.com/Freed-Wu/Freed-Wu.github.io _site
-python -m http.server -d _site
-```
-
-Open <http://localhost:8000> to see your blog:
-
-```shell
+python -m http.server -d_site &
 xdg-open http://localhost:8000
 ```
 
@@ -108,12 +103,13 @@ git clone --recurse-submodules --depth=1 https://github.com/Freed-Wu/Freed-Wu.gi
 cd Freed-Wu.github.io
 ```
 
-### Install Dependencies
+### Install Dependencies and Run Server
 
 #### [`AUR`](https://aur.archlinux.org)
 
 ```shell
 ./install.sh
+jekyll s
 ```
 
 #### [`nix`](https://search.nixos.org/packages)
@@ -129,4 +125,4 @@ bundle install
 bundle exec jekyll s
 ```
 
-<https://localhost:4000> will be opened automatically to display your blog.
+<https://localhost:8000> will be opened automatically to display your blog.
